@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grayscale | Editorial</title>
+    
+    <!-- Fonts: Merriweather for that "News-y" look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'paper': '#fdfbf7', // The off-white paper color
+                        'ink': '#1a1a1a',   // The strong dark grey
+                        'ink-light': '#4a4a4a',
+                        'divider': '#e5e5e0'
+                    },
+                    fontFamily: {
+                        serif: ['Merriweather', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #1a1a1a;
+            font-family: 'Merriweather', serif;
+        }
+        
+        /* Utility for hiding/showing pages */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Classic Newspaper Borders */
+        .double-border-bottom {
+            border-bottom: 3px solid #1a1a1a;
+            position: relative;
+        }
+        .double-border-bottom::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #1a1a1a;
+        }
+
+        /* Form Styling */
+        input, textarea {
+            background-color: transparent;
+            border: 1px solid #1a1a1a;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            background-color: #fff;
+            box-shadow: 4px 4px 0px #1a1a1a;
+        }
+        
+        button.btn-primary {
+            background-color: #1a1a1a;
+            color: #fdfbf7;
+            border: 1px solid #1a1a1a;
+            transition: all 0.2s ease;
+        }
+        button.btn-primary:hover {
+            background-color: transparent;
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header / Nav -->
+    <header class="w-full px-6 py-8 border-b border-ink">
+        <div class="max-w-6xl mx-auto">
+            <!-- Top Bar: Date and Socials -->
+            <div class="flex justify-between items-center text-xs font-sans tracking-widest uppercase border-b border-divider pb-2 mb-6">
+                <span id="current-date">Sunday, November 30, 2025</span>
+                <div class="space-x-4 hidden sm:block">
+                    <a href="#" class="hover:underline">Subscribe</a>
+                    <a href="#" class="hover:underline">Login</a>
+                </div>
+            </div>
+
+            <!-- Logo & Nav -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <h1 onclick="router('home')" class="text-5xl md:text-7xl font-bold tracking-tighter cursor-pointer hover:opacity-80 transition-opacity">
+                    GRAYSCALE.
+                </h1>
+                
+                <nav class="flex items-center gap-8 font-sans font-bold text-sm tracking-widest uppercase">
+                    <button onclick="router('home')" class="nav-link hover:underline decoration-2 underline-offset-4" data-target="home">Home</button>
+                    <button onclick="router('about')" class="nav-link hover:underline decoration-2 underline-offset-4" data-target="about">About</button>
+                    <button onclick="router('blog')" class="nav-link hover:underline decoration-2 underline-offset-4" data-target="blog">Blog</button>
+                    <button onclick="router('community')" class="nav-link hover:underline decoration-2 underline-offset-4" data-target="community">Community</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-6xl mx-auto w-full px-6 py-12">
+
+        <!-- HOME PAGE -->
+        <section id="home" class="page-content active">
+            <!-- Hero Article -->
+            <article class="mb-16 border-b border-divider pb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-8">
+                        <div class="w-full h-96 bg-stone-200 mb-6 flex items-center justify-center text-stone-400 italic font-sans border border-stone-300">
+                            [Main Editorial Image Placeholder]
+                        </div>
+                        <h2 class="text-4xl font-bold mb-4 leading-tight">The Art of Minimalism in Modern Digital Journalism</h2>
+                        <p class="text-xl text-ink-light leading-relaxed mb-6 font-serif">
+                            In an era of noise, silence becomes the loudest statement. We explore how stripping away the color reveals the structure of truth.
+                        </p>
+                        <div class="prose prose-stone max-w-none text-ink-light">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Sidebar Stories -->
+                    <div class="lg:col-span-4 border-l border-divider pl-0 lg:pl-12 flex flex-col gap-8">
+                        <div>
+                            <span class="text-xs font-sans font-bold uppercase tracking-widest text-stone-500 mb-2 block">Opinion</span>
+                            <h3 class="text-xl font-bold hover:underline cursor-pointer">Why Black & White Never Fades</h3>
+                            <p class="text-sm mt-2 text-ink-light">A retrospective on monochrome aesthetics.</p>
+                        </div>
+                        <hr class="border-divider">
+                        <div>
+                            <span class="text-xs font-sans font-bold uppercase tracking-widest text-stone-500 mb-2 block">Culture</span>
+                            <h3 class="text-xl font-bold hover:underline cursor-pointer">The Return of the Printed Page</h3>
+                            <p class="text-sm mt-2 text-ink-light">Physical media is making a surprising comeback.</p>
+                        </div>
+                        <hr class="border-divider">
+                        <div>
+                            <span class="text-xs font-sans font-bold uppercase tracking-widest text-stone-500 mb-2 block">Tech</span>
+                            <h3 class="text-xl font-bold hover:underline cursor-pointer">Algorithms of the Analog</h3>
+                            <p class="text-sm mt-2 text-ink-light">Can code replicate the feel of paper?</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Ticker / Secondary Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-stone-100 p-6 border border-stone-200">
+                    <h4 class="font-bold text-lg mb-2">Editor's Pick</h4>
+                    <p class="text-sm leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+                </div>
+                <div class="bg-stone-100 p-6 border border-stone-200">
+                    <h4 class="font-bold text-lg mb-2">Weekend Read</h4>
+                    <p class="text-sm leading-relaxed">Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.</p>
+                </div>
+                <div class="bg-stone-100 p-6 border border-stone-200">
+                    <h4 class="font-bold text-lg mb-2">Deep Dive</h4>
+                    <p class="text-sm leading-relaxed">Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="about" class="page-content">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-6 italic">"Clarity above all else."</h2>
+                    <div class="w-24 h-1 bg-ink mx-auto"></div>
+                </div>
+
+                <div class="prose prose-lg prose-stone mx-auto mb-16">
+                    <p class="lead">
+                        Grayscale was founded on a simple premise: content should speak for itself. Without the distraction of vibrant colors, the focus returns to the quality of the prose and the integrity of the reporting.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada. Nulla facilisi. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <!-- Masthead -->
+                <div class="border-t-2 border-b-2 border-ink py-8">
+                    <h3 class="text-center font-sans font-bold uppercase tracking-widest mb-8">The Masthead</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <p class="font-bold text-lg">Jane Doe</p>
+                            <p class="text-xs uppercase text-stone-500">Editor-in-Chief</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-lg">John Smith</p>
+                            <p class="text-xs uppercase text-stone-500">Creative Director</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-lg">Alice Grey</p>
+                            <p class="text-xs uppercase text-stone-500">Senior Writer</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-lg">Robert Noir</p>
+                            <p class="text-xs uppercase text-stone-500">Photography</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG PAGE -->
+        <section id="blog" class="page-content">
+            <div class="mb-12 border-b border-ink pb-4">
+                <h2 class="text-5xl font-bold">The Archive</h2>
+            </div>
+
+            <div class="grid grid-cols-1 gap-12">
+                <!-- Blog Post 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 border-b border-divider pb-12">
+                    <div class="md:col-span-1 text-sm text-stone-500 font-sans">
+                        <p>Oct 24, 2025</p>
+                        <p class="uppercase tracking-widest font-bold text-ink mt-1">Design</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <h3 class="text-2xl font-bold mb-3 hover:underline cursor-pointer">Typography as the Voice of Reason</h3>
+                        <p class="text-ink-light leading-relaxed mb-4">
+                            How serif fonts influence trust in modern media. We analyze the psychological impact of typefaces in news dissemination and why traditional forms are returning.
+                        </p>
+                        <a href="#" class="text-sm font-bold uppercase tracking-widest hover:bg-ink hover:text-white inline-block py-1 px-2 transition-colors">Read Full Story -></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 border-b border-divider pb-12">
+                    <div class="md:col-span-1 text-sm text-stone-500 font-sans">
+                        <p>Oct 18, 2025</p>
+                        <p class="uppercase tracking-widest font-bold text-ink mt-1">Architecture</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <h3 class="text-2xl font-bold mb-3 hover:underline cursor-pointer">Concrete Jungles & Grey Skies</h3>
+                        <p class="text-ink-light leading-relaxed mb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                        </p>
+                        <a href="#" class="text-sm font-bold uppercase tracking-widest hover:bg-ink hover:text-white inline-block py-1 px-2 transition-colors">Read Full Story -></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 pb-12">
+                    <div class="md:col-span-1 text-sm text-stone-500 font-sans">
+                        <p>Oct 12, 2025</p>
+                        <p class="uppercase tracking-widest font-bold text-ink mt-1">Politics</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <h3 class="text-2xl font-bold mb-3 hover:underline cursor-pointer">The Middle Ground</h3>
+                        <p class="text-ink-light leading-relaxed mb-4">
+                            Finding nuance in a polarized world. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        </p>
+                        <a href="#" class="text-sm font-bold uppercase tracking-widest hover:bg-ink hover:text-white inline-block py-1 px-2 transition-colors">Read Full Story -></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMUNITY PAGE -->
+        <section id="community" class="page-content">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Forum / Discussions -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-3xl font-bold mb-8">Letters to the Editor</h2>
+                    
+                    <div class="space-y-8">
+                        <div class="bg-white p-6 border border-divider shadow-sm">
+                            <p class="italic text-lg mb-4">"The article on minimalism missed the point entirely. It is not about absence, but about intent."</p>
+                            <div class="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-stone-500">
+                                <span class="font-bold text-ink">Reader 402</span>
+                                <span>•</span>
+                                <span>London, UK</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 border border-divider shadow-sm">
+                            <p class="italic text-lg mb-4">"Finally, a website that doesn't hurt my eyes. Thank you for keeping it simple."</p>
+                            <div class="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-stone-500">
+                                <span class="font-bold text-ink">Sarah J.</span>
+                                <span>•</span>
+                                <span>New York, NY</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 border border-divider shadow-sm">
+                            <p class="italic text-lg mb-4">"I would love to see more coverage on analog photography techniques."</p>
+                            <div class="flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-stone-500">
+                                <span class="font-bold text-ink">PhotoEnthusiast</span>
+                                <span>•</span>
+                                <span>Berlin, DE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar / Events -->
+                <div class="bg-stone-100 p-8 border border-stone-200 h-fit">
+                    <h3 class="font-sans font-bold uppercase tracking-widest mb-6 border-b border-ink pb-2">Upcoming Events</h3>
+                    <ul class="space-y-6">
+                        <li>
+                            <p class="font-bold text-lg">The Silent Auction</p>
+                            <p class="text-sm text-stone-500">Dec 15 • Main Hall</p>
+                        </li>
+                        <li>
+                            <p class="font-bold text-lg">Writer's Workshop</p>
+                            <p class="text-sm text-stone-500">Jan 10 • Virtual</p>
+                        </li>
+                        <li>
+                            <p class="font-bold text-lg">Grayscale Gala</p>
+                            <p class="text-sm text-stone-500">Feb 01 • City Center</p>
+                        </li>
+                    </ul>
+                    <button class="w-full mt-8 btn-primary py-3 font-bold uppercase tracking-widest text-xs">View Calendar</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER & CONTACT FORM (On every page) -->
+    <footer class="mt-auto bg-[#e5e5e0] border-t-4 border-ink pt-16 pb-8 px-6">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- The Contact Form Section -->
+            <div class="bg-paper p-8 md:p-12 border border-ink shadow-[8px_8px_0px_#1a1a1a] mb-16">
+                <div class="text-center mb-10">
+                    <h3 class="text-3xl font-bold mb-2">Get in Touch</h3>
+                    <p class="text-stone-500 italic">Send us a tip, a letter, or a query.</p>
+                </div>
+                
+                <form onsubmit="event.preventDefault(); alert('Message sent to the editorial team.');" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold uppercase tracking-widest mb-2">Name</label>
+                            <input type="text" class="p-3 w-full bg-transparent" placeholder="J. Doe">
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-xs font-bold uppercase tracking-widest mb-2">Email</label>
+                            <input type="email" class="p-3 w-full bg-transparent" placeholder="jdoe@example.com">
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-xs font-bold uppercase tracking-widest mb-2">Subject</label>
+                        <select class="p-3 w-full bg-transparent border border-ink rounded-none">
+                            <option>Letter to the Editor</option>
+                            <option>Advertising Inquiry</option>
+                            <option>Correction Request</option>
+                            <option>General Feedback</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="text-xs font-bold uppercase tracking-widest mb-2">Message</label>
+                        <textarea rows="4" class="p-3 w-full bg-transparent" placeholder="Type your message here..."></textarea>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn-primary px-8 py-3 text-sm font-bold uppercase tracking-widest">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Bottom Footer Info -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-stone-600 border-t border-stone-400 pt-8">
+                <div>
+                    <h4 class="font-bold text-ink uppercase tracking-widest mb-4">Grayscale.</h4>
+                    <p>123 Journalism Row</p>
+                    <p>New York, NY 10012</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-ink uppercase tracking-widest mb-4">Sections</h4>
+                    <ul class="space-y-1">
+                        <li><button onclick="router('home')" class="hover:underline">Home</button></li>
+                        <li><button onclick="router('about')" class="hover:underline">About</button></li>
+                        <li><button onclick="router('blog')" class="hover:underline">Blog</button></li>
+                        <li><button onclick="router('community')" class="hover:underline">Community</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-ink uppercase tracking-widest mb-4">Legal</h4>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:underline">Terms of Service</a></li>
+                        <li><a href="#" class="hover:underline">Cookie Settings</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-12 text-xs text-stone-500 font-sans uppercase tracking-widest">
+                &copy; 2025 Grayscale Media. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current date in header
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+
+        // Simple Router Logic
+        function router(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if(targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update Nav State (Optional style change)
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if(link.dataset.target === pageId) {
+                    link.classList.add('underline');
+                } else {
+                    link.classList.remove('underline');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Initialize Home Nav State
+        document.querySelector('.nav-link[data-target="home"]').classList.add('underline');
+    </script>
+</body>
+</html>
